@@ -3,6 +3,7 @@ package za.ac.nwu.ac.account_system.account;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -12,21 +13,24 @@ public class AccountTransaction implements Serializable {
 
 
     private Long transactionId;
-    private AccountType accountType;
+//    private AccountType accountType;
+    private Long accountTypeId;
     private Long memberId;
     private Long amount;
     private LocalDate transactionDate;
 
-    public AccountTransaction(Long transactionId, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransaction(Long transactionId, Long accountType, Long memberId, Long amount, LocalDate transactionDate) {
         this.transactionId = transactionId;
-        this.accountType = accountType;
+//        this.accountType = accountType;
+        this.accountTypeId = accountType;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
     }
 
-    public AccountTransaction(AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
-        this.accountType = accountType;
+    public AccountTransaction(Long accountType, Long memberId, Long amount, LocalDate transactionDate) {
+//        this.accountType = accountType;
+        this.accountTypeId = accountType;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
@@ -54,14 +58,15 @@ public class AccountTransaction implements Serializable {
         this.transactionId = transactionId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="ACCOUNT_TYPE_ID")
-    public AccountType getAccountType() {
-        return accountType;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name ="ACCOUNT_TYPE_ID")
+    @Column(name = "ACCOUNT_TYPE_ID")
+    public Long getAccountType() {
+        return accountTypeId;
     }
 
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
+    public void setAccountType(Long accountType) {
+        this.accountTypeId = accountType;
     }
 
     @Column(name = "MEMBER_ID")
@@ -96,22 +101,25 @@ public class AccountTransaction implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionId, accountType, memberId, amount, transactionDate);
+        return Objects.hash(transactionId, accountTypeId, memberId, amount, transactionDate);
     }
 
     @Override
     public String toString() {
         return "AccountTransaction{" +
                 "transactionId=" + transactionId +
-                ", accountTypeId=" + accountType +
+                ", accountTypeId=" + accountTypeId +
                 ", memberId=" + memberId +
                 ", amount=" + amount +
                 ", transactionDate=" + transactionDate +
                 '}';
     }
+
+
+
 }

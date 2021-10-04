@@ -14,12 +14,12 @@ import java.util.List;
 @Configuration
 public class AccountConfig {
 
-    @Bean
+   /* @Bean
     CommandLineRunner commandLineRunner(AccountRepository repository) {
         return args -> {
             AccountType miles = new AccountType(
-                    "POINTS",
-                    "Reward Points",
+                    "MILES",
+                    "Discovery Reward Miles",
                     LocalDate.of(2021, Month.SEPTEMBER, 28)
             );
             AccountType plays = new AccountType(
@@ -38,5 +38,5 @@ public class AccountConfig {
         };
 
 
-    }
+    }*/
 }
