@@ -11,14 +11,11 @@ public class AccountController {
 
     private final AccountService accountService;
 
-
     @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
 
     }
-
-
     @GetMapping
     public List<AccountType> showAccounts() {
     return accountService.showAccounts();
@@ -32,14 +29,19 @@ public class AccountController {
     public void registerSubtractTransaction(@RequestBody AccountTransaction transaction) {
         accountService.subtractTransaction(transaction);
     }
-
     @GetMapping("/transactions")
     public List<AccountTransaction> showTransactions(){
         return accountService.showTransactions();
 
     }
-
-
+    @GetMapping("/member/{id}")
+    public List<AccountTransaction> getMemberById(@PathVariable Long id) {
+        return accountService.findByMemberAccount(id);
+    }
+    @GetMapping("/membermiles/{id}")
+    public String getMemberMilesById(@PathVariable Long id) {
+        return accountService.viewMemberMiles(id);
+    }
 
 }
 

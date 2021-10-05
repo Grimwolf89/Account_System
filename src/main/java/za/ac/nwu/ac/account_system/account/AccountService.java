@@ -51,6 +51,24 @@ public class AccountService {
 
     }
 
+    /*public List<AccountTransaction> showTransactionById(Long id) {
+        return transactionRepository.findByMemberAccount(id);
+    }*/
 
+
+    public List<AccountTransaction> findByMemberAccount(Long id) {
+        return transactionRepository.findByMemberId(id);
+    }
+
+    public String viewMemberMiles(Long id) {
+        List<AccountTransaction> accountTransactionList = findByMemberAccount(id);
+        Long availableMiles = 0L;
+
+        for (int i = 0; i < accountTransactionList.size(); i++) {
+            availableMiles += accountTransactionList.get(i).getAmount();
+        }
+        System.out.println("The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ");
+        return "The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ";
+    }
 }
 
