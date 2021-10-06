@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.account_system.account;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ public class AccountController {
     }
     @GetMapping
     public List<AccountType> showAccounts() {
-    return accountService.showAccounts();
+        return accountService.showAccounts();
     }
 
     @PostMapping("/add")

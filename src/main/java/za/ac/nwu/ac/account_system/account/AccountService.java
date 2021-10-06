@@ -20,18 +20,7 @@ public class AccountService {
         this.transactionRepository = transactionRepository;
     }
 
-   /* public static void registerTransaction(AccountTransaction transaction) {
-
-        System.out.println(transaction);
-    }*/
-
     public static void addTransaction(AccountTransaction transaction) {
-        /*transactionRepository.findMemberAccount(transaction.getMemberId());*/
-        /*Optional<AccountTransaction> transactionById = transactionRepository.findMemberAccount(transaction.getMemberId());
-        if (transactionById.isPresent()) {
-            throw new IllegalStateException("No member found");
-        }*/
-
         transactionRepository.save(transaction);
         System.out.println(transaction.toString());
     }
@@ -48,7 +37,6 @@ public class AccountService {
 
     public List<AccountTransaction> showTransactions() {
         return transactionRepository.findAll();
-
     }
 
     /*public List<AccountTransaction> showTransactionById(Long id) {

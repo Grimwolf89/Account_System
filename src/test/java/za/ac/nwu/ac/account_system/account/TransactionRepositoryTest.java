@@ -1,5 +1,6 @@
 package za.ac.nwu.ac.account_system.account;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,6 +19,11 @@ class TransactionRepositoryTest {
     private TransactionRepository underTest;
 
 
+    @AfterEach
+    void tearDown() {
+        underTest.deleteAll();
+    }
+
     @Test()
     void itShouldfindByMemberId() {
 
@@ -33,7 +39,6 @@ class TransactionRepositoryTest {
 
         //when
         boolean expectedValue = underTest.selectExistingMember(transaction.getMemberId());
-
 
         //then
         assertThat(expectedValue).isTrue();
