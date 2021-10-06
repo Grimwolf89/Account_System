@@ -1,5 +1,8 @@
 package za.ac.nwu.ac.account_system.account;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,6 +14,7 @@ import java.util.Objects;
 @Table(name = "Account_Transaction")
 public class AccountTransaction implements Serializable {
 
+    private static  final Logger LOGGER = LoggerFactory.getLogger(AccountTransaction.class);
 
     private Long transactionId;
 //    private AccountType accountType;
@@ -26,6 +30,9 @@ public class AccountTransaction implements Serializable {
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
+
+
+
     }
 
     public AccountTransaction(Long accountType, Long memberId, Long amount, LocalDate transactionDate) {
@@ -34,9 +41,12 @@ public class AccountTransaction implements Serializable {
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
+
+        LOGGER.info("A transaction was created with the following details: {}", this.toString());
     }
 
     public AccountTransaction() {
+
     }
 
     @Id

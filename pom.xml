@@ -10,8 +10,8 @@
     </parent>
     <groupId>za.ac.nwu.ac</groupId>
     <artifactId>Account_System</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>Account_System</name>
     <description>Account_System</description>
     <properties>
@@ -20,6 +20,10 @@
         <swagger.version>2.1.10</swagger.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.account_system.account;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +11,7 @@ import java.util.Optional;
 @Component
 public class AccountService {
 
-
+    private static  final Logger LOGGER = LoggerFactory.getLogger(AccountTransaction.class);
     private static TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
     /*private final TransactionRepository transactionRepository;*/
@@ -55,7 +57,7 @@ public class AccountService {
         for (int i = 0; i < accountTransactionList.size(); i++) {
             availableMiles += accountTransactionList.get(i).getAmount();
         }
-        System.out.println("The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ");
+        LOGGER.info("The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ");
         return "The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ";
     }
 }
