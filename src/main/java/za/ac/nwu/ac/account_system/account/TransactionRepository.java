@@ -14,8 +14,19 @@ import java.util.Optional;
 @Transactional
 public interface TransactionRepository extends JpaRepository<AccountTransaction, Long> {
 
-
-
     List<AccountTransaction> findByMemberId(@Param("memberId") Long memberId);
+
+    @Query("" +
+            "SELECT CASE WHEN COUNT(s) > 0 THEN " +
+            "TRUE else FALSE END " +
+            "FROM AccountTransaction s " +
+            "WHERE s.memberId = ?1"
+    )
+    Boolean selectExistingMember(Long memberId);
+
+   /* @Override
+    public Optional<AccountTransaction> findById(Long memberId);
+*/
+    /*Boolean memberExists(@Param("memberId") Long memberId);*/
 
 }
