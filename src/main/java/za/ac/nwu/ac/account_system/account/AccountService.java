@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import za.ac.nwu.ac.account_system.exceptions.MemberNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,12 +42,8 @@ public class AccountService {
         return transactionRepository.findAll();
     }
 
-    /*public List<AccountTransaction> showTransactionById(Long id) {
-        return transactionRepository.findByMemberAccount(id);
-    }*/
-
-
     public List<AccountTransaction> findByMemberAccount(Long id) {
+
         return transactionRepository.findByMemberId(id);
     }
 
@@ -57,8 +54,15 @@ public class AccountService {
         for (int i = 0; i < accountTransactionList.size(); i++) {
             availableMiles += accountTransactionList.get(i).getAmount();
         }
+
+       /* if (accountTransactionList.isEmpty()) {
+//            LOGGER.isDebugEnabled();
+            LOGGER.debug("No member found with ID: " + id.toString());
+            throw new MemberNotFoundException("No member found with ID: " + id.toString());
+        }*/
         LOGGER.info("The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ");
         return "The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ";
     }
+
 }
 
