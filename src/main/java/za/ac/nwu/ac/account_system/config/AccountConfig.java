@@ -1,15 +1,6 @@
 package za.ac.nwu.ac.account_system.config;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Repository;
-import za.ac.nwu.ac.account_system.account.AccountRepository;
-import za.ac.nwu.ac.account_system.account.AccountType;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
 
 @Configuration
 public class AccountConfig {

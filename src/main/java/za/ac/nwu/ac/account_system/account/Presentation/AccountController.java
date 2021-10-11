@@ -1,17 +1,15 @@
-package za.ac.nwu.ac.account_system.account;
+package za.ac.nwu.ac.account_system.account.Presentation;
 
-import io.swagger.annotations.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-import za.ac.nwu.ac.account_system.exceptions.MemberNotFoundException;
+import za.ac.nwu.ac.account_system.account.BusinessLogic.AccountService;
+import za.ac.nwu.ac.account_system.account.DataAccess.AccountTransaction;
+import za.ac.nwu.ac.account_system.account.DataAccess.AccountType;
 
-import javax.annotation.Resource;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/v1/accounts")
@@ -25,7 +23,6 @@ public class AccountController {
         this.accountService = accountService;
 
     }
-    @ApiIgnore
     @GetMapping
     public List<AccountType> showAccounts() {
         return accountService.showAccounts();

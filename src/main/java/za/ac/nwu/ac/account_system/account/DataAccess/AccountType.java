@@ -1,4 +1,4 @@
-package za.ac.nwu.ac.account_system.account;
+package za.ac.nwu.ac.account_system.account.DataAccess;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -4,11 +4,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.nwu.ac.account_system.account.DataAccess.AccountTransaction;
+import za.ac.nwu.ac.account_system.account.DataAccess.TransactionRepository;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

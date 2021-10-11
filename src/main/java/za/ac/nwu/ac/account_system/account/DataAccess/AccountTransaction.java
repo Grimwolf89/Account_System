@@ -1,4 +1,4 @@
-package za.ac.nwu.ac.account_system.account;
+package za.ac.nwu.ac.account_system.account.DataAccess;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 

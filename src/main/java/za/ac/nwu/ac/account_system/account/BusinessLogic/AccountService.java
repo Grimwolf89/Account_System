@@ -1,13 +1,16 @@
-package za.ac.nwu.ac.account_system.account;
+package za.ac.nwu.ac.account_system.account.BusinessLogic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import za.ac.nwu.ac.account_system.account.DataAccess.AccountRepository;
+import za.ac.nwu.ac.account_system.account.DataAccess.AccountTransaction;
+import za.ac.nwu.ac.account_system.account.DataAccess.AccountType;
+import za.ac.nwu.ac.account_system.account.DataAccess.TransactionRepository;
 import za.ac.nwu.ac.account_system.exceptions.MemberNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class AccountService {
@@ -55,12 +58,13 @@ public class AccountService {
             availableMiles += accountTransactionList.get(i).getAmount();
         }
 
-       /* if (accountTransactionList.isEmpty()) {
-//            LOGGER.isDebugEnabled();
-            LOGGER.debug("No member found with ID: " + id.toString());
+        // Exception for an empty list of transactions
+        if (accountTransactionList.isEmpty()) {
+            LOGGER.isDebugEnabled();
+            LOGGER.info("No member found with ID: " + id.toString());
             throw new MemberNotFoundException("No member found with ID: " + id.toString());
-        }*/
-        LOGGER.info("The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ");
+        }
+        LOGGER.info("The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles");
         return "The miles for Member: "+ id.toString() + " is " +  availableMiles + " Miles ";
     }
 
